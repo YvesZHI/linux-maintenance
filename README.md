@@ -50,11 +50,6 @@ sudo du -hsx /* | sort -rh
 sudo du -h `find / -type f -size +500M`
 ```
 
-### Non-interactive ssh ###
-```
-sshpass -p[passwd] ssh -oStrictHostKeyChecking=no [user]@[server] [cmd]
-```
-
 ### Arithmetic ###
 ```
 awk "BEGIN {print 2.0/3}"
@@ -75,4 +70,9 @@ grep -RlZ lineA | xargs -0 grep -l lineB
 g++ -O3 main.cpp -g
 perf record --call-graph dwarf -- yourapp
 perf report -g graph --no-children 
+```
+
+### Non-interactive ssh ###
+```
+sshpass -p[passwd] ssh -oStrictHostKeyChecking=no [user]@[server] [cmd]
 ```
