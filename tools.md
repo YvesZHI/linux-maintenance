@@ -1,4 +1,4 @@
-# linux-tools
+# bash-tools
 
 
 ### Monitor mem usage of a process ###
