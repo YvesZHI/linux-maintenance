@@ -20,3 +20,9 @@ https://regex101.com/
 ```
 http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
 ```
+
+### GDB Tutorial ###
+```
+http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html
+```
+
