@@ -35,7 +35,7 @@ struct Perf
             // run perf here
             char buf[50];
             std::sprintf(buf, "perf %s -p %d > %s.data 2>&1", type, pid, type);
-            execl("/bin/sh", "sh", "-c", buf, NULL);
+            execl("/bin/sh", "sh", "-c", buf, nullptr);
         } else {
             // set the father process as the leader of its process group
             setpgid(cpid, 0);
