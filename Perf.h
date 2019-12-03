@@ -15,6 +15,9 @@
  *******************************************************
  */
  
+#ifndef PERF_H_
+#define PERF_H_
+
 #include <cstdio>
 #include <functional>
 #include <sys/stat.h>
@@ -48,3 +51,5 @@ struct Perf
         }
     }
 };
+
+#endif
