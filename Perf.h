@@ -5,7 +5,10 @@
  *                                                     *
  *     // perf before                                  *
  *     Perf::profile("stat", [&](){                    *
- *              the_func_that_you_want_to_be_perf();   *
+ *              func_to_be_perf_stat();                *
+ *          });                                        *
+ *     Perf::profile("record", [&](){                  *
+ *              func_to_be_perf_record();              *
  *          });                                        *
  *     // perf after                                   *
  *                                                     *
