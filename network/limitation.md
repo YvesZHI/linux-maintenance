@@ -26,7 +26,7 @@ As some physical reason, the size of each ethernet frame must be 46B-1500B (excl
 An ethernet frame is as below:<br>
 |&nbsp;Ethernet head (22B)&nbsp;|&nbsp;IP head (20B)&nbsp;|&nbsp;TCP head (20B) / UDP head (8B)&nbsp;|&nbsp;Application Data (1400B)&nbsp;|<br>
 
-The standard MTU of Internet is 576B, so the size of UDP should be less than 548B (576 - 8(UDP head) - 20(IP head)).<br>
+As the minimum size of IPv4 datagram of any device has to be able to receive 576B, it is strongly recommended to set the size of UDP datagram less than 548B (576 - 8(UDP head) - 20(IP head)) so that UDP Fragmentation can be avoided.<br>
 
 ### References ###
 http://www.linuxvox.com/post/what-are-file-max-and-file-nr-linux-kernel-parameters/<br>
