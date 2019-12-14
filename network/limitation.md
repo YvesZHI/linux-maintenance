@@ -24,9 +24,9 @@ https://stackoverflow.com/questions/31378403/how-much-data-it-cost-to-set-up-a-t
 As some physical reason, the size of each ethernet frame must be 46B-1500B (exclude 18B coming from the head and the tail of Data Link Layer). In other words, `1500B` is the maximum size of Network Layer. This `1500B` is call MTU (Maximum transmission unit).<br>
 
 An ethernet frame is as below:<br>
-|&nbsp;Ethernet head (22B)&nbsp;|&nbsp;IP head (20B)&nbsp;|&nbsp;TCP head (20B) / UDP head (8B)&nbsp;|&nbsp;Application Data (1400B)&nbsp;|<br>
+|&nbsp;Ethernet head (22B)&nbsp;|&nbsp;IP head (20B)&nbsp;|&nbsp;TCP head (20B) / UDP head (8B)&nbsp;|&nbsp;Application Data (1460B for TCP / 1472B for UDP)&nbsp;|<br>
 
-As the minimum size of IPv4 datagram of any device has to be able to receive 576B, it is strongly recommended to set the size of UDP datagram less than 548B (576 - 8(UDP head) - 20(IP head)) so that UDP Fragmentation can be avoided.<br>
+As the minimum size of IPv4 datagram of any device has to be able to receive 576B, it is strongly recommended to set the size of UDP datagram less than 548B (576 - 8(UDP head) - 20(IP head)) while Internet programming so that UDP Fragmentation can be avoided. For LAN programming, the recommended size of UDP datagram could be 1472B.<br>
 
 ### References ###
 http://www.linuxvox.com/post/what-are-file-max-and-file-nr-linux-kernel-parameters/<br>
