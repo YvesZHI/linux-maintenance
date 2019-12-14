@@ -14,6 +14,7 @@ Each TCP connection is identified by four elements: {local ip, local port, remot
 Without counting the special IP addresses, each server can hold 2^48 TCP connections (in the case of local ip and local port fixed).<br>
 
 ### size of packet ###
+As some physical reason, the size of each ethernet frame must be 46B-1500B. An ethernet frame is as below:<br>
 |&nbsp;Ethernet head (22B)&nbsp;|&nbsp;IP head (20B)&nbsp;|&nbsp;TCP head (20B)&nbsp;|&nbsp;Application Data (1400B)&nbsp;|<br>
 `cat /proc/sys/net/ipv4/tcp_rmem && cat /proc/sys/net/ipv4/tcp_wmem`: the size of sliding window (turn off TCP Window scaling will force all TCP connections to use a 64KB window)<br>
 
