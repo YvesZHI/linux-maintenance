@@ -11,7 +11,7 @@
 
 ### TCP socket ###
 Each TCP connection is identified by four elements: {local ip, local port, remote ip, remote port}.<br>
-Without counting the special IP addresses, each server can hold 2^48 TCP connections.<br>
+Without counting the special IP addresses, each server can hold 2^48 TCP connections (in the case of local ip and local port fixed).<br>
 
 
 ### References ###
