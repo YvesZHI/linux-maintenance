@@ -1,6 +1,6 @@
 # network tools
-server: 192.168.1.100:1234
-client: 192.168.1.200
+server: 192.168.1.100:1234<br>
+client: 192.168.1.200<br>
 
 ### nc ###
 ##### scan port #####
