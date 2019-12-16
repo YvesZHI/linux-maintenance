@@ -43,3 +43,13 @@ client: `echo abcde | nc -u 192.168.1.100 1234`<br>
 
 output of `tcpdump`:<br>
 12:20:46.833832 IP 192.168.1.200.38490 > 192.168.1.100.1234: UDP, length 6
+
+##### who is pinging me #####
+server: `tcpdump -i eth0 icmp and icmp[icmptype]=icmp-echo`<br>
+client: `ping 192.168.1.100 -c 4`
+
+output of `tcpdump`:<br>
+12:55:48.596685 IP 192.168.1.200 > 192.168.1.100: ICMP echo request, id 44868, seq 1, length 64<br>
+12:55:49.609180 IP 192.168.1.200 > 192.168.1.100: ICMP echo request, id 44868, seq 2, length 64<br>
+12:55:50.633178 IP 192.168.1.200 > 192.168.1.100: ICMP echo request, id 44868, seq 3, length 64<br>
+12:55:51.657167 IP 192.168.1.200 > 192.168.1.100: ICMP echo request, id 44868, seq 4, length 64<br>
