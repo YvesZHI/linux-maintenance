@@ -25,16 +25,14 @@ server: `nc -l 1234`<br>
 client: `nc 192.168.1.100 1234`<br>
 
 output of server:<br>
-`three handshake: `12:22:36.551563 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [S], seq 2524926410, win 29200, options [mss 1460,sackOK,TS val 2061376385 ecr 0,nop,wscale 7], length 0<br>
-`three handshake: `12:22:36.551575 IP 192.168.1.100.1234 > 192.168.1.200.51516: Flags [S.], seq 3399548678, ack 2524926411, win 28960, options [mss 1460,sackOK,TS val 1582320715 ecr 2061376385,nop,wscale 7], length 0<br>
-`three handshake: `12:22:36.551639 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [.], ack 1, win 229, options [nop,nop,TS val 2061376385 ecr 1582320715], length 0<br>
+`three handshake 1: `12:22:36.551563 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [S], seq 2524926410, win 29200, options [mss 1460,sackOK,TS val 2061376385 ecr 0,nop,wscale 7], length 0<br>
+`three handshake 2: `12:22:36.551575 IP 192.168.1.100.1234 > 192.168.1.200.51516: Flags [S.], seq 3399548678, ack 2524926411, win 28960, options [mss 1460,sackOK,TS val 1582320715 ecr 2061376385,nop,wscale 7], length 0<br>
+`three handshake 3: `12:22:36.551639 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [.], ack 1, win 229, options [nop,nop,TS val 2061376385 ecr 1582320715], length 0<br>
 `sending: `12:22:36.551692 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [P.], seq 1:7, ack 1, win 229, options [nop,nop,TS val 2061376385 ecr 1582320715], length 6<br>
 `ack: `12:22:36.551699 IP 192.168.1.100.1234 > 192.168.1.200.51516: Flags [.], ack 7, win 227, options [nop,nop,TS val 1582320715 ecr 2061376385], length 0<br>
-`four handshake: `12:22:36.551701 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [F.], seq 7, ack 1, win 229, options [nop,nop,TS val 2061376385 ecr 1582320715], length 0<br>
-`four handshake: `12:22:36.551716 IP 192.168.1.100.1234 > 192.168.1.200.51516: Flags [F.], seq 1, ack 8, win 227, options [nop,nop,TS val 1582320715 ecr 2061376385], length 0<br>
-`four handshake: `12:22:36.551780 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [.], ack 2, win 229, options [nop,nop,TS val 2061376385 ecr 1582320715], length 0<br>
-
-Why does the last `four handshake` miss?<br>
+`four handshake 1: `12:22:36.551701 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [F.], seq 7, ack 1, win 229, options [nop,nop,TS val 2061376385 ecr 1582320715], length 0<br>
+`four handshake 2+3: `12:22:36.551716 IP 192.168.1.100.1234 > 192.168.1.200.51516: Flags [F.], seq 1, ack 8, win 227, options [nop,nop,TS val 1582320715 ecr 2061376385], length 0<br>
+`four handshake 4: `12:22:36.551780 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [.], ack 2, win 229, options [nop,nop,TS val 2061376385 ecr 1582320715], length 0<br>
 
 
 ##### simulate UDP connection #####
