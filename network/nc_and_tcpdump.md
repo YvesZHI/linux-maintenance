@@ -24,7 +24,7 @@ server: ` tcpdump -i eth0 port 1234`<br>
 server: `nc -l 1234`<br>
 client: `nc 192.168.1.100 1234`<br>
 
-output of `tcpdump`:<br>
+output of server:<br>
 `three handshake: `12:22:36.551563 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [S], seq 2524926410, win 29200, options [mss 1460,sackOK,TS val 2061376385 ecr 0,nop,wscale 7], length 0<br>
 `three handshake: `12:22:36.551575 IP 192.168.1.100.1234 > 192.168.1.200.51516: Flags [S.], seq 3399548678, ack 2524926411, win 28960, options [mss 1460,sackOK,TS val 1582320715 ecr 2061376385,nop,wscale 7], length 0<br>
 `three handshake: `12:22:36.551639 IP 192.168.1.200.51516 > 192.168.1.100.1234: Flags [.], ack 1, win 229, options [nop,nop,TS val 2061376385 ecr 1582320715], length 0<br>
@@ -41,14 +41,14 @@ Why does the last `four handshake` miss?<br>
 server: `nc -u -l 1234`<br>
 client: `echo abcde | nc -u 192.168.1.100 1234`<br>
 
-output of `tcpdump`:<br>
+output of server:<br>
 12:20:46.833832 IP 192.168.1.200.38490 > 192.168.1.100.1234: UDP, length 6
 
 ##### who is pinging me #####
 server: `tcpdump -i eth0 icmp and icmp[icmptype]=icmp-echo`<br>
 client: `ping 192.168.1.100 -c 4`
 
-output of `tcpdump`:<br>
+output of server:<br>
 12:55:48.596685 IP 192.168.1.200 > 192.168.1.100: ICMP echo request, id 44868, seq 1, length 64<br>
 12:55:49.609180 IP 192.168.1.200 > 192.168.1.100: ICMP echo request, id 44868, seq 2, length 64<br>
 12:55:50.633178 IP 192.168.1.200 > 192.168.1.100: ICMP echo request, id 44868, seq 3, length 64<br>
