@@ -47,7 +47,6 @@ struct Perf
             // stop perf by killing child process and all its descendants(sh, perf stat etc)
             kill(-cpid, SIGINT);
             wait(nullptr);
-            // rest of the program
         }
     }
 };
