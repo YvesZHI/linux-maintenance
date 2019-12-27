@@ -1,13 +1,13 @@
 /*
  ******************* How to use this *******************
  *                                                     *
- *     #include "Perf.h"                               *
+ *     #include "PartialPerf.h"                        *
  *                                                     *
  *     // perf before                                  *
- *     Perf::profile("stat", [&](){                    *
+ *     PartialPerf::profile("stat", [&](){             *
  *              func_to_be_perf_stat();                *
  *          });                                        *
- *     Perf::profile("record", [&](){                  *
+ *     PartialPerf::profile("record", [&](){           *
  *              func_to_be_perf_record();              *
  *          });                                        *
  *     // perf after                                   *
@@ -15,8 +15,8 @@
  *******************************************************
  */
  
-#ifndef PERF_H_
-#define PERF_H_
+#ifndef PARTIALPERF_H_
+#define PARTIALPERF_H_
 
 #include <cstdio>
 #include <functional>
@@ -26,7 +26,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-struct Perf
+struct PartialPerf
 {
     static void profile(const char *type, std::function<void()> body)
     {
