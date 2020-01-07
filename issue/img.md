@@ -7,7 +7,9 @@ For storing line drawings, text, and iconic graphics at a smaller file size, GIF
 
 ### PNG ###
 PNG format is a lossless compression file format.<br>
-PNG is a good choice for storing line drawings, text, and iconic graphics at a small file size.
+PNG is a good choice for storing line drawings, text, and iconic graphics at a small file size.<br>
+Besides, PNG supports transparency.
 
 ### Conclusion ###
-JPGs are for photographs and realistic images. PNGs are for line art, text-heavy images, and images with few colors. 
+JPGs are for photographs and realistic images.<br>
+PNGs are for line art, text-heavy images, images with few colors, and transparency.
