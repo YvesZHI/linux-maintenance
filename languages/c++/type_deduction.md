@@ -77,3 +77,20 @@ auto x3{3};    // x3 is int --- EXCEPTION!
 auto x4{1, 2}; // ERROR
 auto x5{std::initializer_list{3}}; // ERROR
 ```
+
+### decltype ###
+decltype won't remove the cv qualifiers.
+
+if the value category of expression is xvalue, then decltype yields T&&;<br>
+if the value category of expression is lvalue, then decltype yields T&;<br>
+if the value category of expression is prvalue, then decltype yields T.<br>
+```
+struct A { double x; };
+const A* a;
+decltype(a->x) y;       // type of y is double (declared type)
+decltype((a->x)) z = y; // type of z is const double& (lvalue expression)
+
+int x = 1;
+decltype(x) y = 2;   // type of x is int
+decltype((x)) z = 3; // type of z is int&
+```
