@@ -104,15 +104,15 @@ The type of return value of `auto func();` is just the same as `auto` type deduc
 The type of return value of `decltype(auto) func();` follows the rule of `decltype`.<br>
 ```
 int i;
-int&& f();
+int&& func();
 auto x3a = i;                  // int
 decltype(auto) x3d = i;        // int
 auto x4a = (i);                // int
 decltype(auto) x4d = (i);      // int&
-auto x5a = f();                // int
-decltype(auto) x5d = f();      // int&&
-auto x6a = { 1, 2 };           // std::initializer_list<int>
-decltype(auto) x6d = { 1, 2 }; // ERROR
+auto x5a = func();             // int
+decltype(auto) x5d = func();   // int&&
+auto x6a = {1, 2};             // std::initializer_list<int>
+decltype(auto) x6d = {1, 2};   // ERROR
 auto* x7a = &i;                // int*
 decltype(auto)* x7d = &i;      // ERROR
 ```
