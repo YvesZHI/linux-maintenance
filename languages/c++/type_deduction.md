@@ -102,6 +102,7 @@ decltype((x)) z = 3; // type of z is int&
 ### decltype(auto) ###
 The type of return value of `auto func();` is just the same as `auto` type deduction.<br>
 The type of return value of `decltype(auto) func();` follows the rule of `decltype`.<br>
+`decltype(auto)` must be used alone, adding anything else is illegal.
 ```
 int i;
 int&& func();
@@ -115,4 +116,5 @@ auto x6a = {1, 2};             // std::initializer_list<int>
 decltype(auto) x6d = {1, 2};   // ERROR
 auto* x7a = &i;                // int*
 decltype(auto)* x7d = &i;      // ERROR
+decltype(auto)& x7r = i;       // ERROR
 ```
