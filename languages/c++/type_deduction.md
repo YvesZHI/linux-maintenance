@@ -105,14 +105,14 @@ The type of return value of `decltype(auto) func();` follows the rule of `declty
 ```
 int i;
 int&& f();
-auto x3a = i;                  // decltype(x3a) is int
-decltype(auto) x3d = i;        // decltype(x3d) is int
-auto x4a = (i);                // decltype(x4a) is int
-decltype(auto) x4d = (i);      // decltype(x4d) is int&
-auto x5a = f();                // decltype(x5a) is int
-decltype(auto) x5d = f();      // decltype(x5d) is int&&
-auto x6a = { 1, 2 };           // decltype(x6a) is std::initializer_list<int>
-decltype(auto) x6d = { 1, 2 }; // ERROR, { 1, 2 } is not an expression
-auto* x7a = &i;                // decltype(x7a) is int*
-decltype(auto)* x7d = &i;       // ERROR, declared type is not plain decltype(auto)
+auto x3a = i;                  // int
+decltype(auto) x3d = i;        // int
+auto x4a = (i);                // int
+decltype(auto) x4d = (i);      // int&
+auto x5a = f();                // int
+decltype(auto) x5d = f();      // int&&
+auto x6a = { 1, 2 };           // std::initializer_list<int>
+decltype(auto) x6d = { 1, 2 }; // ERROR
+auto* x7a = &i;                // int*
+decltype(auto)* x7d = &i;      // ERROR
 ```
