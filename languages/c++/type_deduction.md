@@ -59,7 +59,11 @@ f(27);  // 27 is rvalue, so T is int,        param's type is int&&
 ```
 
 ### auto ###
-`auto` type deduction is almost the same as template type deduction.<br>
+`auto` type deduction is almost the same as template type deduction as below.<br>
+```
+template<typename T>
+void f(T param);
+```
 
 ### ATTENTION ###
 Type deduction can't work with implicit direct-list-initialization.<br>
@@ -93,4 +97,22 @@ decltype((a->x)) z = y; // type of z is const double& (lvalue expression)
 int x = 1;
 decltype(x) y = 2;   // type of x is int
 decltype((x)) z = 3; // type of z is int&
+```
+
+### decltype(auto) ###
+The type of return value of `auto func();` is just the same as `auto` type deduction.<br>
+The type of return value of `decltype(auto) func();` follows the rule of `decltype`.<br>
+```
+int i;
+int&& f();
+auto x3a = i;                  // decltype(x3a) is int
+decltype(auto) x3d = i;        // decltype(x3d) is int
+auto x4a = (i);                // decltype(x4a) is int
+decltype(auto) x4d = (i);      // decltype(x4d) is int&
+auto x5a = f();                // decltype(x5a) is int
+decltype(auto) x5d = f();      // decltype(x5d) is int&&
+auto x6a = { 1, 2 };           // decltype(x6a) is std::initializer_list<int>
+decltype(auto) x6d = { 1, 2 }; // ERROR, { 1, 2 } is not an expression
+auto* x7a = &i;                // decltype(x7a) is int*
+decltype(auto)* x7d = &i;       // ERROR, declared type is not plain decltype(auto)
 ```
