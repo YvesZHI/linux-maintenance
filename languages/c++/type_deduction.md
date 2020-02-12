@@ -1,5 +1,6 @@
 # Type deduction
 
+
 ### template ###
 ##### case 1 #####
 ```
