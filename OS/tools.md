@@ -55,14 +55,22 @@ sudo du -h `find / -type f -size +500M`
 awk "BEGIN {print 2.0/3}"
 ```
 
-### Find all executable binary files ###
+### find ###
+##### find all executable binary files #####
 ```
 find -type f -executable -exec file -i '{}' \; | grep 'x-executable; charset=binary'
 ```
 
-### Grep multi lines ###
+### grep ###
+##### grep multi lines #####
 ```
 grep -RlZ lineA | xargs -0 grep -l lineB
+```
+
+### sed ###
+##### insert a file content into another file with specific line #####
+```
+sed -e "${line}r FILE1" FILE2
 ```
 
 ### Perf ###
