@@ -1,5 +1,6 @@
 # Image
 
+
 ### JPG ###
 JPG format is a lossy compressed file format.<br>
 It is useful for storing photographs at a smaller size than a BMP.<br>
