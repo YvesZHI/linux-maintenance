@@ -20,7 +20,7 @@ In a word, the mutex wraps the atomic operation and memory fence together so tha
 ### futex ###
 The futex is just this kind of mutex, coming from the Linux kernel. Furthermore, it does some optimization.
 
-For the older-version mutex, if a process or a thread is trying to acquire the lock but fails, the process or the thread will be scheduled by the kernel immediately, meaning that it will be put to sleep. This cause two kinds of latency: 1) the context switch from the user space to the kernel space; 2) the state switch between asleep and awake.
+For the older-version mutex, if a process or a thread is trying to acquire the lock but fails, the process or the thread will be scheduled by the kernel immediately, meaning that it will be put to sleep. This cause two kinds of latency: 1) the context switch from the user space to the kernel space; 2) the kernel scheduling operation: the state switch between asleep and awake.
 
 The rule of the futex is if a process or a thread fails on acquiring the lock, it will not involve the kernel but keep trying to acquire the lock in a short time. If the acquisition still fails, the futex will involve the kernel, meaning that the futex lets the kernel schedule the process or the thread.
 
