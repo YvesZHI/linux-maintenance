@@ -73,6 +73,11 @@ grep -RlZ lineA | xargs -0 grep -l lineB
 sed -e "${line}r FILE1" FILE2
 ```
 
+##### replace the nth line of a file #####
+```
+sed '${line}s/.*/NEW_CONTENT/' FILE
+```
+
 ### Perf ###
 ```
 g++ -O3 main.cpp -g
