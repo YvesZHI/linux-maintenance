@@ -24,4 +24,21 @@ For the older-version mutex, if a process or a thread is trying to acquire the l
 
 The rule of the futex is if a process or a thread fails on acquiring the lock, it will not involve the kernel but keep trying to acquire the lock in a short time. If the acquisition still fails, the futex will involve the kernel, meaning that the futex lets the kernel schedule the process or the thread.
 
-In short, futex = spinlock + mutex. In the period of spinlock, if the acquisition succeeds, the context switch and the state switch can be avoided.
+In short, futex is a hybrid mutex (spinlock + custom mutex). In the period of spinlock, if the acquisition succeeds, the context switch and the state switch can be avoided.
+
+### spinlock ###
+The spinlock is implemented based on the atomic operation `test-and-set`. With the spinlock, if a process or a thread fails on the acquisition of lock, it will keep trying until it acquires the lock. This is called busy-waiting.
+
+Today, the spinlock may (depending on architecture) become hybird too (spinlock + CPU instruction (such as HALT)). If a process or a thread keeps failing on the acquisition of lock for some time, the spinlock will decide to stop the process or the thread with some CPU instruction for a while and re-execute it later, instead of involving the kernel (because using spinlock means involving the kernel is not expected).
+
+### performance ###
+When to use lock, mutex/futex and spinlock? Which one has a better performance?<br>
+The answer is: it depends.<br>
+These things are implemented based on the architecture, so a different architecture may bring a different performance.
+
+There are several general rules:
+1) When doubt, use mutex/futex;<br>
+2) If the lock is needed because of some business logic, it normally means a piece of code needs to be locked. In this case, use mutex/futex;<br>
+3) If a fundamental type needs to be locked for a short time, use spinlock.
+
+In the real world, different architecture, different business logic and different design mixed up together. So if it is hard to make a prediction on their performance by brain, do the testing is the only right way.
