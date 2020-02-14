@@ -41,4 +41,4 @@ There are several rules of thumb:
 2) If the lock is needed because of some business logic, it normally means a piece of code needs to be locked. In this case, use mutex/futex;<br>
 3) If a fundamental type needs to be locked for a short time, use spinlock.
 
-In the real world, different architecture, different business logic and different design mixed up together. So if it is hard to make a prediction on their performance by brain, do the testing is the only right way.
+In the real world, different architecture, different business logic and different design mixed up together. So if it is hard to make a convincing prediction on their performance by brain, testing is the only right way.
