@@ -36,7 +36,7 @@ When to use lock, mutex/futex and spinlock? Which one has a better performance?<
 The answer is: it depends.<br>
 These things are implemented based on the architecture, so a different architecture may bring a different performance.
 
-There are several general rules:
+There are several rules of thumb:
 1) When doubt, use mutex/futex;<br>
 2) If the lock is needed because of some business logic, it normally means a piece of code needs to be locked. In this case, use mutex/futex;<br>
 3) If a fundamental type needs to be locked for a short time, use spinlock.
