@@ -2,7 +2,7 @@
 
 
 ### Reading file without IO function ###
-There is a file, named `custom.config`, its content is as below:
+There is a file, named `custom.config`, its content as below:
 ```
 name titi
 password 123
