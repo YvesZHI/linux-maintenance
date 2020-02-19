@@ -52,4 +52,6 @@ int main(void) {
 ```
 4) Compile and build: `gcc test.c custom.config.o`.
 
-Besides, to move the content to another section (`.rodata` as an example), execute the command `objcopy -I binary -O elf64-x86-64 -B i386 custom.config custom.config.o --rename-section .data=.rodata,alloc,load,readonly,data,contents`
+### Others ###
+1) To move the content to another section (`.rodata` as an example), execute the command `objcopy -I binary -O elf64-x86-64 -B i386 custom.config custom.config.o --rename-section .data=.rodata,alloc,load,readonly,data,contents`.<br>
+2) GCC allows specifying the section for data. For example, `__attribute__((section("FOO"))) int global_var = 42;` means put the global variable `global_var` into the section named `FOO`.
