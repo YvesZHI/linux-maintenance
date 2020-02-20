@@ -41,13 +41,14 @@ Contents of section .data:
 extern const char _binary_custom_config_start[];
 extern const char _binary_custom_config_size;
 
-int main(void) {
-  size_t size = (size_t)&_binary_custom_config_size;
-  char config[size + 1];
-  strncpy(config, _binary_custom_config_start, size);
-  config[size] = '\0';
-  printf("config = \"%s\"\n", config);
-  return 0;
+int main()
+{
+    size_t size = (size_t)&_binary_custom_config_size;
+    char config[size + 1];
+    strncpy(config, _binary_custom_config_start, size);
+    config[size] = '\0';
+    printf("config = \"%s\"\n", config);
+    return 0;
 }
 ```
 4) Compile and build: `gcc test.c custom.config.o`.
