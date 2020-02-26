@@ -68,7 +68,7 @@ grep -RlZ lineA | xargs -0 grep -l lineB
 ```
 
 ### sed ###
-##### insert a file content into another file with specific line #####
+##### insert a file content into another file after a specific line number #####
 ```
 sed -e "${line}r FILE1" FILE2
 ```
@@ -76,6 +76,21 @@ sed -e "${line}r FILE1" FILE2
 ##### replace the nth line of a file #####
 ```
 sed '${line}s/.*/NEW_CONTENT/' FILE
+```
+
+##### insert a line after match #####
+```
+sed '/PATTERN/a NEW_CONTENT' FILE
+```
+
+##### insert a line before match #####
+```
+sed '/PATTERN/i NEW_CONTENT' FILE
+```
+
+##### search and replace #####
+```
+sed 's/PATTERN/NEW_CONTENT/g' FILE
 ```
 
 ### Perf ###
