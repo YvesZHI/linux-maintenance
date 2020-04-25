@@ -26,3 +26,7 @@ http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
 http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html
 ```
 
+### Git Visualized Tutorial ###
+```
+https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1
+```
