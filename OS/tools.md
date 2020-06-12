@@ -116,3 +116,17 @@ lsof -aPi6 [-Fn] -p <PID>  # IPv6
 ```
 lsof -i :<PORT>
 ```
+
+### User management
+##### Send message to all logged-in users
+```
+wall -n <MESSAGE>
+```
+##### List all logged-in users
+```
+who -u  # You can kill -9 <PID> to kick off some logged-in user
+```
+##### Send message to a specific terminal
+```
+echo '<MESSAGE>' > /dev/pts/<ID>
+```
