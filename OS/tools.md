@@ -105,7 +105,7 @@ perf report -g graph --no-children
 sshpass -p[passwd] ssh -oStrictHostKeyChecking=no [user]@[server] [cmd]
 ```
 
-### List used ports by a process
+### List listened ports by a process
 ```
 lsof -aPi [-Fn] -p <PID>
 lsof -aPi4 [-Fn] -p <PID>  # IPv4
