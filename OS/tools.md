@@ -138,5 +138,5 @@ objdump -dj .text <binary_name>
 ```
 ##### Examine the section of .data
 ```
-readelf -x .data <binary_name>
+objdump -dj .data <binary_name>
 ```
