@@ -131,12 +131,7 @@ who -u  # You can kill -9 <PID> to kick off some logged-in user
 echo '<MESSAGE>' > /dev/pts/<ID>
 ```
 
-### Binary
-##### Disassemble the parts containing codes
+### objdump
 ```
-objdump -dj .text <binary_name>
-```
-##### Examine the section of .data
-```
-objdump -dj .data <binary_name>
+objdump -dj <section_name> <binary_name>
 ```
