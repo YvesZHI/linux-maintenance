@@ -17,6 +17,10 @@ The kernel provides a kind of lock, it is called mutex. The mutex is generated b
 
 In a word, the mutex wraps the atomic operation and memory fence together so that it can be used easily to lock a data, a struct and a piece of code, and it can also make the process or the thread be scheduled by the kernel.
 
+One more thing: lock-free. What is lock-free?
+
+Lock-free means "multithread but do NOT let the kernel schedules".
+
 ### futex ###
 The futex is just this kind of mutex, coming from the Linux kernel. Furthermore, it does some optimization.
 
