@@ -133,5 +133,6 @@ echo '<MESSAGE>' > /dev/pts/<ID>
 
 ### objdump
 ```
+objdump -h <binary_name>
 objdump -dj <section_name> <binary_name>
 ```
