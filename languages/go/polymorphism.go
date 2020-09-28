@@ -31,7 +31,7 @@ type Task struct {
 }
 
 // member function of base class
-// GetPathOfParam is defined in the derived class
+// GetPathOfParam and GetParam are defined in the derived class
 func (t Task) InitTask() {
     fmt.Println(t.GetPathOfParam())
     fmt.Println(t.TaskID)
