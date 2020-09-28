@@ -40,13 +40,13 @@ func (t Task) InitTask() {
 
 // custom data member of derived class
 type TaskAppConfig struct {
-        URL string
+    URL string
 }
 
 // derived class
 type TaskApp struct {
-        *TaskData
-        Config TaskAppConfig
+    *TaskData
+    Config TaskAppConfig
 }
 
 // member function of derived class
