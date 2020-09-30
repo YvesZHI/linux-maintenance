@@ -26,12 +26,12 @@ type TaskData struct {
 
 // base class containing data member and member function
 type Task struct {
-    TaskData
+    *TaskData
     DerivedTaskHandler
 }
 
 // member function of base class
-// GetPathOfParam and GetParam are defined in the derived class
+// GetPathOfParam is defined in the derived class
 func (t Task) InitTask() {
     fmt.Println(t.GetPathOfParam())
     fmt.Println(t.TaskID)
@@ -45,7 +45,7 @@ type TaskAppConfig struct {
 
 // derived class
 type TaskApp struct {
-    *TaskData
+    TaskData
     Config TaskAppConfig
 }
 
@@ -60,10 +60,12 @@ func (t TaskApp) GetParam() string {
     return string(res)
 }
 
-
 func main() {
-    var t TaskHandler
-    tData := TaskData{TaskID: "xxx", Progress: "33", Msg: "wtf", Status: "4"}
-    t = Task{TaskData: tData, DerivedTaskHandler: TaskApp{TaskData: &tData, Config: TaskAppConfig{URL: "xxx"}}}
-    t.InitTask()
+    taskData := TaskData{TaskID: "xxx", Progress: "33", Msg: "wtf", Status: "4"}
+    taskAppData := TaskAppConfig{URL: "http://abc.com"}
+    taskApp := TaskApp{TaskData: taskData, Config: taskAppData}
+    // The three lines above simulate that the constructor of the derived class.
+    // As Go doesn't support the real polymorphism, it is Task class, instead of TaskApp class to do the polymorphism-thing.
+    task := Task{DerivedTaskHandler: taskApp, TaskData: &taskApp.TaskData}
+    task.InitTask()
 }
