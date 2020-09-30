@@ -73,6 +73,7 @@ func main() {
     task.DerivedTaskHandler = &taskApp
     // none-polymorphism
     taskApp.InitTask()
+    taskApp.Task.InitTask()
     // polymorphism
     task.InitTask()
 }
