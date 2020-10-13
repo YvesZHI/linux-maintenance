@@ -14,6 +14,7 @@ type TaskHandler interface {
 type DerivedTaskHandler interface {
     GetPathOfParam() string
     GetParam() string
+    TaskHandler
 }
 
 // class data member
@@ -60,6 +61,10 @@ func (t TaskApp) GetParam() string {
     return string(res)
 }
 
+func testPolymorphism(d DerivedTaskHandler) {
+    d.InitTask()
+}
+
 func main() {
     // base class data member init
     taskData := TaskData{TaskID: "xxx", Progress: "33", Msg: "wtf", Status: "4"}
@@ -70,10 +75,11 @@ func main() {
     // derived class init
     taskApp := TaskApp{Task: &task, Config: taskAppData}
     // base class init part 2
-    task.DerivedTaskHandler = &taskApp
+    task.DerivedTaskHandler = &taskApp // NECESSARY!
     // none-polymorphism
     taskApp.InitTask()
     taskApp.Task.InitTask()
     // polymorphism
     task.InitTask()
+    testPolymorphism(taskApp)
 }
