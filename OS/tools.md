@@ -136,3 +136,16 @@ echo '<MESSAGE>' > /dev/pts/<ID>
 objdump -h <binary_name>
 objdump -dj <section_name> <binary_name>
 ```
+
+### Monitor and compare memory layout of pid
+```
+if [ -z "$1" ]; then
+    exit 1
+fi
+sudo rm core*
+sudo gcore $1
+xxd "core.${1}">"core.${1}.hex.old"
+sleep 2
+sudo gcore $1
+xxd "core.${1}">"core.${1}.hex"
+```
