@@ -31,3 +31,8 @@ http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html
 ```
 https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1
 ```
+
+### Hack process ###
+```
+https://blog.holbertonschool.com/hack-the-virtual-memory-c-strings-proc/
+```
