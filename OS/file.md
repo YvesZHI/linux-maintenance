@@ -22,3 +22,8 @@ When the Open Instance Count equals to 0, the resource of the entry of Open File
 # User Space
 Each process has its own file descriptor table. When a process `open` a file, a new file descriptor will be generated, which points to some entry in Open File Table.
 `fork` and `dup` will generate a new file descriptor, old and new file descriptor points to the same entry of Open File Table.
+
+# Buffer
+When a process is trying to access a file, the file will be loaded into the buffer, which is located in RAM, then the access of file happens between the process and the buffer. So there are two issues:
+1. Dirty data. The data in the buffer and in the hard drive may be different.
+2. Duplicated data. If the process is holding some data coming from the file, it means that the same data can be found in the process and in the buffer at the same time.
