@@ -41,6 +41,14 @@ CPU copies data from hard drive to Page Cache, then CPU copies data from Page Ca
 ### mmap
 CPU copies data from hard drive to Page Cache, then mmap maps the memory of Page Cache to process. In other words, mmap makes Page Cache and process share the same memory so that process can read and write immediately at User space. Comparing with the Standard IO, mmap reduces one data copy.
 
+### sendfile
+CPU copies data between one file descriptor and another. It happens in Kernel space so that it saves data copies between Page Cache to processes.
+
+### splice
+Splice is just like how sendfile works but there are two differences:
+1. Splice can only be used to copy data from file to socket buffer (in Kernel space);
+2. Sendfile is still a CPU copy but splice creates a pipeline between file (in Page Cache) and socket buffer to transfer data.
 
 # References
-https://www.programmersought.com/article/1218984627/
+https://www.programmersought.com/article/1218984627/<br>
+https://zhuanlan.zhihu.com/p/83398714
