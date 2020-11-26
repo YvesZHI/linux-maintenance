@@ -50,5 +50,5 @@ Splice is just like how sendfile works but there are two differences:
 2. Sendfile is still a CPU copy but splice creates a pipeline between file (in Page Cache) and socket buffer to transfer data.
 
 # References
-https://www.programmersought.com/article/1218984627/<br>
+https://www.programmersought.com/article/1218984627<br>
 https://zhuanlan.zhihu.com/p/83398714
