@@ -161,5 +161,5 @@ df . | (read a; read a b; echo $a)
 ```
 ##### Get metadata by inode number
 ```
-sudo debugfs -R "stat <`stat -c %i examples.desktop`>" `df . | (read a; read a b; echo $a)`
+sudo debugfs -R "stat <`stat -c %i <FILENAME>`>" `df . | (read a; read a b; echo $a)`
 ```
