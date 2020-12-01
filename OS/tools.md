@@ -149,3 +149,17 @@ sleep 2
 sudo gcore $1
 xxd "core.${1}">"core.${1}.hex"
 ```
+
+### Metadata of file/directory
+##### Get inode number
+```
+stat -c %i <FILENAME>
+```
+##### Get filesystem
+``` 
+df . | (read a; read a b; echo $a)
+```
+##### Get metadata by inode number
+```
+sudo debugfs -R "stat <`stat -c %i examples.desktop`>" `df . | (read a; read a b; echo $a)`
+```
