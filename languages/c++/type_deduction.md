@@ -60,7 +60,7 @@ f(27);  // 27 is rvalue, so T is int,        param's type is int&&
 ```
 
 ### auto ###
-`auto` type deduction is almost the same as template type deduction as below.<br>
+`auto` type deduction is almost the same as template type deduction as below. Meaning that `auto` will drops all cv-qualifiers, but `auto &` maintains them.
 ```
 template<typename T>
 void f(T param);
