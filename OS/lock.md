@@ -4,7 +4,7 @@
 ### mechanism ###
 The lock relies on two kinds of operations: `test-and-set` and memory fence. Both of them come from the CPU instruction, so they won't involve the kernel. Besides, some other hardware-level algorithms are relied too, such as Cache coherence, which won't involve the kernel either.
 
-The lock can be regarded as an integer: 0 means unlock and 1 means lock. `test-and-set` makes sure that switching between 0 and 1 is atomic, and memory fence makes sure that the protected region by the lock won't be reloaded outside of the region.
+The lock can be regarded as an integer: 0 means unlock and 1 means lock. `test-and-set` makes sure that switching between 0 and 1 is atomic, and memory fence makes sure that the protected region by the lock won't be reordered outside of the region (without memory fence, compiler and CPU may do some optimisation which may reorder the execution order).
 
 Normally, the atomic operation, such as `test-and-set`, only works for the fundamental types, like an integer, byte, long and double (depending on architecture), but with the help of some languages, such as C++11, the atomic operation on a struct (`std::atomic<CustomStruct>` in C++11) is possible too (depending on architecture).
 
