@@ -65,3 +65,10 @@ int i = 1;
 while (i == 1) {}
 ```
 may be optimized as `while (true) {}`, but `volatile int i = 1;` will forbid this optimization.
+
+
+# References
+https://preshing.com/20120625/memory-ordering-at-compile-time/<br>
+https://preshing.com/20120710/memory-barriers-are-like-source-control-operations/<br>
+https://stackoverflow.com/questions/18449291/when-is-a-compiler-only-memory-barrier-such-as-stdatomic-signal-fence-useful<br>
+https://stackoverflow.com/questions/37786547/enforcing-statement-order-in-c/
