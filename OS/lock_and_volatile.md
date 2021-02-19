@@ -52,7 +52,7 @@ In the real world, different architecture, different business logic and differen
 
 
 ### mechanism ###
-`volatile` doesn't create any memory fence, doesn't make operations atomic, so it is orthogonal with thread safe, meaning that it can't be used as any kind of lock. It simply tells compiler and CPU that the variable specified by `volatile` may be changed from outside so do not do any optimisation on the variable, and the value of the variable cached by L1, L2 or L3 is not unreliable so accessing the variable must come from or go to the RAM.
+`volatile` doesn't create any memory fence, doesn't make operations atomic, so it is orthogonal with thread safe, meaning that it can't be used as any kind of lock. It simply tells compiler and CPU that the variable specified by `volatile` may be changed from outside so do not do any optimization on the variable, and the value of the variable cached by L1, L2 or L3 is unreliable so accessing the variable must come from or go to the RAM.
 
 `volatile` is normally used in three cases:
 1) MMIO;
