@@ -4,9 +4,7 @@
 ### mechanism ###
 The lock relies on two kinds of operations: `test-and-set` and memory fence. Both of them come from the CPU instruction, so they won't involve the kernel. Besides, some other hardware-level algorithms are relied too, such as Cache coherence, which won't involve the kernel either.
 
-The lock can be regarded as an integer: 0 means unlock and 1 means lock. `test-and-set` makes sure that switching between 0 and 1 is atomic, and memory fence makes sure that the protected region by the lock won't be reordered outside of the region (without memory fence, compiler and CPU may do some optimisation which may reorder the execution order).
-
-Normally, the atomic operation, such as `test-and-set`, only works for the fundamental types, like an integer, byte, long and double (depending on architecture), but with the help of some languages, such as C++11, the atomic operation on a struct (`std::atomic<CustomStruct>` in C++11) is possible too (depending on architecture).
+The lock can be regarded as an integer: 0 means unlock and 1 means lock. With the help of register, `test-and-set` makes sure that switching between 0 and 1 is atomic, and memory fence makes sure that the protected region by the lock won't be reordered outside of the region (without memory fence, compiler and CPU may do some optimisation which may reorder the execution order).
 
 ### lock and kernel ###
 Till now, the lock doesn't involve the kernel, so what is the role of the kernel in this issue?
@@ -47,6 +45,12 @@ There are several rules of thumb:
 
 In the real world, different architecture, different business logic and different design mixed up together. So if it is hard to make a convincing prediction on their performance by brain, testing is the only right way.
 
+### Deeper... ###
+Normally, the atomic operation, such as `test-and-set`, only works for the fundamental types, like an integer, byte, long and double (depending on architecture), but with the help of some languages, such as C++11, the atomic operation on a struct (`std::atomic<CustomStruct>` in C++11) is possible too (depending on architecture).
+
+Memory fence, also known as memory barrier, has some basic types and two implicit types. The basic types, such as LOAD barrier, STORE barrier, are used to implement the `std::atomic` in C++11. The two implicit types are LOCK and UNLOCK, they always appear together and they can make sure that the region between LOCK and UNLOCK won't be reordered outside of the region. The general lock is implemented by them. The performance of this kind of lock is normally not good because it disables the reordering mechanism of a whole region, which is a kind of optimization of CPU. Whereas `std::atomic` uses the memory fence of the basic types, which allows CPU to build fences for specific data (instead of a whole area), so `std::atomic` should have a better performance.
+
+However, things are not that easy - we can't ignore the existence of Kernel. The modern kernel always provides some mechanisms, such as `futex`, some schedule algorithm, etc. So we can't simply say that `std::atomic` must have a better performance than the general lock has. That's why we should follow the rules of thumb above.
 
 # volatile
 
@@ -70,5 +74,6 @@ may be optimized as `while (true) {}`, but `volatile int i = 1;` will forbid thi
 # References
 https://preshing.com/20120625/memory-ordering-at-compile-time/<br>
 https://preshing.com/20120710/memory-barriers-are-like-source-control-operations/<br>
+https://preshing.com/20120913/acquire-and-release-semantics/<br>
 https://stackoverflow.com/questions/18449291/when-is-a-compiler-only-memory-barrier-such-as-stdatomic-signal-fence-useful<br>
 https://stackoverflow.com/questions/37786547/enforcing-statement-order-in-c/
