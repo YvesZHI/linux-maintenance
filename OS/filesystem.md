@@ -22,8 +22,26 @@ When the Open Instance Count equals to 0, the resource of the entry of Open File
 
 ### User Space
 Each process has its own file descriptor table. When a process `open` a file, a new file descriptor will be generated, which points to some entry in Open File Table.
-`fork` and `dup` will generate a new file descriptor, old and new file descriptor points to the same entry of Open File Table.
+`fork` and `dup` will generate a new file descriptor, old and new file descriptors point to the same entry of Open File Table.
 
+### Graph show
+```
+  ProcA                   Open File             Inode
+|-------|                   Table               Table
+|  fd1  |--------\       |--------|           |--------|
+|-------|   dup   \----> | Cnt: 3 |---------> | Cnt: 1 |
+|  fd2  |--------/ /     | Offset |           |filename|
+|-------|         /      |--------|           |--------|=========> Hard Drive
+                 /       | Cnt: 1 |           | Cnt: 1 |
+  ProcB    fork /   /--> | Offset |---------> | Offset |
+|-------|      /   /     |--------|           |--------|
+|  fd1  |-----/   /
+|-------|        /
+|  fd2  |-------/
+|-------|
+
+/proc/<PID>/fd/             lsof              stat, debugfs
+```
 
 # How does a file (data) is read and written
 ### Page Cache / Buffer
