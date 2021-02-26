@@ -9,7 +9,7 @@ For a file, the content is simply its data. For a directory, the content is a di
 
 ### Kernel Space
 Kernel maintains two things: INode Table and Open File Table.
-The INode Table here comes from the INode Table on the hard drive, but a new inode will be generated only if RAM needs to access a file. If an inode is not needed anymore, it will be free.
+The INode Table here comes from the INode Table on the hard drive (when booting up, the kernel will generate its INode Table by reading the INode Table on the hard drive), but a new inode will be generated only if RAM needs to access a file. If an inode is not needed anymore, it will be free.
 
 Open File Table contains the metadata about opened file by processes. Each entry of Open File Table has the following format:
 - INode Number
@@ -40,7 +40,7 @@ Each process has its own file descriptor table. When a process `open` a file, a 
 |  fd2  |-------/
 |-------|
 
-/proc/<PID>/fd/             lsof              stat, debugfs
+/proc/<PID>/fd/             lsof             ls, stat, debugfs...
 ```
 
 # How does a file (data) is read and written
