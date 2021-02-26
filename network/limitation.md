@@ -9,6 +9,7 @@
 
 ##### number of port #####
 0-1024 is reserved by the OS.<br>
+`cat /proc/sys/net/ipv4/ip_local_port_range`: the usable ports<br>
 
 ##### number of TCP socket #####
 Each TCP connection is identified by four elements: {local ip, local port, remote ip, remote port}.<br>
@@ -32,3 +33,4 @@ In the case of UDP Fragmentation occurring, UDP datagram has a high probability 
 ### References ###
 http://www.linuxvox.com/post/what-are-file-max-and-file-nr-linux-kernel-parameters/<br>
 https://wiki.khnet.info/index.php/Conntrack_tuning<br>
+https://www.cnblogs.com/duanxz/p/4464178.html<br>
