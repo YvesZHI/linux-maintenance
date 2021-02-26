@@ -26,7 +26,7 @@ Each process has its own file descriptor table. When a process `open` a file, a 
 
 ### Hardlink vs Softlink
 Hardlink: different entries in the INode Table containing the same Inode ID.<br>
-Softlink: a new entry in the INode Table, pointing a special file, whose data is a pointer, which points the entry of the INode Table.
+Softlink: an entry in the INode Table, pointing a special file, whose data is a pointer, which points an entry in the INode Table of the real file.
 
 ### Graph show
 ```
