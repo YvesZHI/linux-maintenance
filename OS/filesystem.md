@@ -24,24 +24,30 @@ When the Open Instance Count equals to 0, the resource of the entry of Open File
 Each process has its own file descriptor table. When a process `open` a file, a new file descriptor will be generated, which points to some entry in Open File Table.
 `fork` and `dup` will generate a new file descriptor, old and new file descriptors point to the same entry of Open File Table.
 
+### Hardlink vs Softlink
+Hardlink: different entries in the INode Table containing the same Inode ID.<br>
+Softlink: a new entry in the INode Table, pointing a special file, whose data is a pointer, which points the entry of the INode Table.
+
 ### Graph show
 ```
-  ProcA                   Open File             Inode
+  ProcA                   Open File             INode
 |-------|                   Table               Table
 |  fd1  |--------\       |--------|           |--------|
 |-------|   dup   \----> | Cnt: 3 |---------> | Cnt: 1 |
 |  fd2  |--------/ /     | Offset |           |filename|
-|-------|         /      |--------|           |--------|=========> Hard Drive
-                 /       | Cnt: 1 |           | Cnt: 1 |
-  ProcB    fork /   /--> | Offset |---------> | Offset |
-|-------|      /   /     |--------|           |--------|
-|  fd1  |-----/   /
-|-------|        /
+|-------|         /      |--------|           |Inode ID|
+                 /       | Cnt: 1 |           |--------|=========> Hard Drive
+  ProcB    fork /   /--> | Offset |---------> | Cnt: 1 |
+|-------|      /   /     |--------|           |filename|
+|  fd1  |-----/   /                           |Inode ID|
+|-------|        /                            |--------|
 |  fd2  |-------/
 |-------|
 
 /proc/<PID>/fd/             lsof             ls, stat, debugfs...
 ```
+
+
 
 # How does a file (data) is read and written
 ### Page Cache / Buffer
