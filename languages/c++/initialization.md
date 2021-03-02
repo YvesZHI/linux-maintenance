@@ -56,15 +56,41 @@ _to be continued..._
 
 ### Dynamic initialization
 
+##### Aggregate initialization
+Initializes an aggregate from braced-init-list. e.g. `char a[3] = {'a', 'b'};`.
 
+##### Reference initialization
+Binds a reference to an object. e.g. `char& c = a[0];`.
 
+##### List initialization
+Initializes an object from braced-init-list.
 
+It has two types: direct-list-initialization (e.g. `T obj{arg1, arg2};`) and copy-list-initialization (e.g. `T obj = {arg1, arg2};`).
 
+The key point is that List initialization utilize `std::initializer_list` to do the initialization. It means that, 
+1) `int a{3.5}` won't compile;
+2) The constructor with a `std::initializer_list` is always preferred.
 ```
-struct A { int m; };
-struct B { ~B(); int m; };
-struct C { C() : m(){}; ~C(); int m; };
-struct D { D(){}; int m; };
-struct E { E() = default; int m;};  
-struct F {F(); int m;};  F::F() = default;
+struct A{
+    A(std::initializer_list<std::string>);    //Always be preferred for A a{"value"}
+    A(std::string);
+};
 ```
+
+##### Copy initialization
+Initializes an object from another object: copy constructor and move constructor.
+
+##### Direct initialization
+Initializes an object from explicit set of constructor arguments. So it is all about constructors. e.g. `std::string s("hello");`. For a non-class type, `T val{arg};` is Direct initialization, instead of List initialization.
+
+##### Value initialization
+This is the initialization performed when an object is constructed with an empty initializer. e.g. `T();`, `T obj{};`, `new T();`, `new T{};` etc.
+# TBC
+
+##### Default initialization
+This is the initialization performed when an object is constructed with no initializer. e.g. `T obj;`.
+
+
+
+# References
+https://stackoverflow.com/questions/47366453/direct-initialization-vs-direct-list-initialization-c<br>
