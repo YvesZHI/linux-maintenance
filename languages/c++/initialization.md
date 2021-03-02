@@ -81,7 +81,7 @@ struct A{
 Initializes an object from another object: copy constructor and move constructor.
 
 ##### Direct initialization
-Initializes an object from explicit set of constructor arguments. So it is all about constructors. e.g. `std::string s("hello");`. For a non-class type, `T val{arg};` is Direct initialization, instead of List initialization.
+Initializes an object from explicit set of constructor arguments by calling relative constructors. e.g. `std::string s("hello");`. For a non-class type, `T val{arg};` is Direct initialization, instead of List initialization.
 
 ##### Value initialization
 This is the initialization performed when an object is constructed with an empty initializer. e.g. `T();`, `T obj{};`, `new T();`, `new T{};` etc.
