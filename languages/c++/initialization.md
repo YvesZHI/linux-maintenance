@@ -1,16 +1,15 @@
 # Initialization
 
-
-### Static initialization and Dynamic initialization
+There are two kinds of initializations: Static initialization and Dynamic initialization.<br>
 Static initialization is either Zero initialization or Constant initialization, any other initialization is Dynamic initialization.
 
-##### Static initialization
+### Static initialization
 Static initialization happens at compile time. It happens on the global, static, static local and thread_local (abbr. GSST) variables. Initial values of GSST variables are evaluated during compilation and burned into the data section of the executable.
 
 At compile time, if the initial value of a GSST variable can be evaluated, Constant initialization will happen; Otherwise, Zero initialization will happen.<br>
 If Zero initialization happen at compile time, Dynamic initialization will happen at runtime.
 
-- Constant initialization
+##### Constant initialization
 ```
 struct MyStruct
 {
@@ -20,7 +19,7 @@ int MyStruct::a = 67; // Constant initialization
 int i = 1;            // Constant initialization
 ```
 
-- Zero initialization & Dynamic initialization
+##### Zero initialization & Dynamic initialization
 ```
 std::string s; // compile time: zero-initialized to indeterminate value
                // runtime: then default-initialized to ""
@@ -54,4 +53,6 @@ constexpr int d = func2(); // Constant initialization
 
 ##### constinit & consteval
 to be continued...
-##### Force Constant initialization: constexpr
+
+
+### Dynamic initialization
