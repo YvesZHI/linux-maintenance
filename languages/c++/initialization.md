@@ -59,8 +59,20 @@ _to be continued..._
 ##### Aggregate initialization
 Initializes an aggregate from braced-init-list. e.g. `char a[3] = {'a', 'b'};`.
 
+So, the syntax of Aggregate initialization is `T obj = {arg1, arg2...}`.
+```
+if (sizeOfList < numberOfMemberOfObj)
+    do Value initialization for other members of obj
+```
+
 ##### Reference initialization
 Binds a reference to an object. e.g. `char& c = a[0];`.
+
+##### Default initialization
+This is the initialization performed when an object is constructed with no initializer. e.g. `T obj;`.
+
+##### Copy initialization
+Initializes an object from another object: copy constructor and move constructor.
 
 ##### List initialization
 Initializes an object from braced-init-list.
@@ -77,19 +89,26 @@ struct A{
 };
 ```
 
-##### Copy initialization
-Initializes an object from another object: copy constructor and move constructor.
-
 ##### Direct initialization
 Initializes an object from explicit set of constructor arguments by calling relative constructors. e.g. `std::string s("hello");`. For a non-class type, `T val{arg};` is Direct initialization, instead of List initialization.
 
 ##### Value initialization
 This is the initialization performed when an object is constructed with an empty initializer. e.g. `T();`, `T obj{};`, `new T();`, `new T{};` etc.
-# TBC
+- if `T` is an array type, each element of the array is value-initialized;
+- if `T` is a class type with no default constructor or with a user-provided or deleted default constructor, the object is default-initialized;
+- if `T` is a class type with a default constructor that is neither user-provided nor deleted, the object is zero-initialized and then it is default-initialized if it has a non-trivial default constructor; (e.g. `int a{};` will invoke simply Zero initialization whereas `std::string s{};` will invoke Zero initialization then Default initialization.)
+- otherwise, the object is zero-initialized.
 
-##### Default initialization
-This is the initialization performed when an object is constructed with no initializer. e.g. `T obj;`.
+A constructor is user-provided if it is user-declared and not explicitly defaulted on its first declaration.
+```
+struct foo
+{
+    foo();
+    int i;
+};
 
+foo::foo() = default; // user-provided constructor as it is not explicitly defaulted on its first declaration
+```
 
 
 # References
