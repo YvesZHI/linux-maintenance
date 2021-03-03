@@ -96,7 +96,7 @@ Initializes an object from explicit set of constructor arguments by calling rela
 This is the initialization performed when an object is constructed with an empty initializer. e.g. `T();`, `T obj{};`, `new T();`, `new T{};` etc.
 - if `T` is an array type, each element of the array is value-initialized;
 - if `T` is a class type with no default constructor or with a user-provided or deleted default constructor, the object is default-initialized;
-- if `T` is a class type with a default constructor that is neither user-provided nor deleted, the object is zero-initialized and then it is default-initialized if it has a non-trivial default constructor; (e.g. `int a{};` will invoke simply Zero initialization whereas `std::string s{};` will invoke Zero initialization then Default initialization.)
+- if `T` is a class type with a default constructor that is neither user-provided nor deleted, the object is zero-initialized and then it is default-initialized if it has a non-trivial default constructor; (e.g. `PODType obj{};` will invoke simply Zero initialization whereas `std::string s{};` will invoke Zero initialization then Default initialization.)
 - otherwise, the object is zero-initialized.
 
 A constructor is user-provided if it is user-declared and not explicitly defaulted on its first declaration.
